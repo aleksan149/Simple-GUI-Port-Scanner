@@ -1,5 +1,5 @@
 import socket
-from guizero import App, Text, TextBox, PushButton, Combo
+from guizero import App, Text, TextBox, PushButton, Combo, info
 
 
 # Создаем функцию сканера. В параметрах принимаем адрес хоста и список с портами
@@ -30,43 +30,6 @@ def scan_ports(host, ports):
             # Считаем колличество открытых портов
             p += 1
     finish_vidget.value = f"\n{host}: Active ports found: {p} \nThe scan is complete!"
-
-
-
-# Выбор из списка портов (GUI) (Пометка GUI в описании говорит что функция влияет на графический интерфейс)
-def go():
-    one_port.value = ""
-    # изменения в GUI
-    if ports_choise.value == "Standard ports":
-        lable_00.hide()
-        lable_01.show()
-        one_port.enabled=False
-        one_port.value = "80, 443...and more"
-        # вызываем функцию создания списка с портами
-        create_ports_list(ports_pop)
-    elif ports_choise.value == "User input:":
-        one_port.enabled=True
-        lable_00.show()
-        lable_01.hide()
-        # вызываем функцию создания списка с портами
-        one_port_list.clear()
-        create_ports_list(one_port_list)
-
-    else:
-        one_port.enabled=False
-    # Отправляем результат функции go на проверку функции scan_button
-    scan_button_active()
-
-
-
-# Активация кнопки Scan (GUI)
-def scan_button_active():
-    # Если поля host и port не пусты, то кнопка становится активна
-    if host.value != "" and ports != []:
-        scan_button.enabled=True
-    else:
-        scan_button.enabled=False
-    #print(host.value, ports)
 
 
 
@@ -102,6 +65,45 @@ def create_ports_list(value):
     ports += value
 
 
+
+# Выбор из списка портов (GUI) (Пометка GUI в описании говорит что функция влияет на графический интерфейс)
+def go():
+    one_port.value = ""
+    # изменения в GUI
+    if ports_choise.value == "Standard ports":
+        lable_00.hide()
+        lable_01.show()
+        one_port.enabled=False
+        one_port.value = "80, 443...and more"
+        # вызываем функцию создания списка с портами
+        create_ports_list(ports_pop)
+    elif ports_choise.value == "User input:":
+        one_port.enabled=True
+        lable_00.show()
+        lable_01.hide()
+        # вызываем функцию создания списка с портами
+        one_port_list.clear()
+        create_ports_list(one_port_list)
+    else:
+        one_port.enabled=False
+    # Отправляем результат функции go на проверку функции scan_button
+    scan_button_active()
+
+
+
+# Активация кнопки Scan (GUI)
+def scan_button_active():
+    # Если поля host и port не пусты, то кнопка становится активна
+    if host.value != "" and ports != []:
+        scan_button.enabled=True
+    else:
+        scan_button.enabled=False
+    #print(host.value, ports)
+
+
+# About (GUI)
+def about():
+    info("info", "Created by Aleksan149 \n2022")
 
 # Списки портов для сканирования
 ports_pop = [20, 21, 22, 23, 25, 42, 43, 53, 67, 69, 80, 110, 115, 123, 137, 138, 139, 143, 161, 179, 443, 445, 514,
@@ -153,6 +155,9 @@ port_vidget = Text(app)
 # Лейбл итоговый
 finish_vidget = Text(app)
 
+# Кнопка инфо
+info_butoon = PushButton(app, text="about", command=about, align="bottom", padx=3, pady=3)
+info_butoon.text_color = "blue"
 
 # Запуск GUI
 app.display()
