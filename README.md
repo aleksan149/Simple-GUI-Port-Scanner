@@ -1,6 +1,8 @@
 # Simple-GUI-Port-Scanner
 A simple port scanner with a graphical interface. It has modest functionality compared to other popular scanners, but performs its main function: shows the active ports of the target.
 
+![Image alt](https://github.com/{aleksan149}/{Simple-GUI-Port-Scanner}/raw/{main}/SGPS1.png)
+
 Dependencies:
 Python3, Guizero
 
