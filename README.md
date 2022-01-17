@@ -3,17 +3,14 @@ A simple port scanner with a graphical interface. It has modest functionality co
 
 ![Иллюстрация к проекту](https://github.com/aleksan149/Simple-GUI-Port-Scanner/blob/main/image/SGPS1.png)
 
-Dependencies:
+## Dependencies:
 Python3, Guizero
 
-Linux and MacOS:
-Installation: 
+## Linux and MacOS installation: 
+* pip3 install guizero 
+* sudo chmod +x Simple_GUI_Port_Scanner.py
 
-pip3 install guizero 
+## Launch:
+* python3 Simple_GUI_Port_Scanner.py
 
-sudo chmod +x Simple_GUI_Port_Scanner.py
-
-Launch:
-python3 Simple_GUI_Port_Scanner.py
-
-There is also a compiled app file for macOS in the releases.
+#### There is also a compiled app file for macOS in the releases.
